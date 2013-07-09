@@ -69,6 +69,7 @@ add_filter('screen_options_show_screen', 'remove_screen_options');
 function wps_admin_bar() {
     global $wp_admin_bar;
     //$wp_admin_bar->remove_menu('wp-logo');
+	$wp_admin_bar->remove_menu('updates');
     $wp_admin_bar->remove_menu('about');
     $wp_admin_bar->remove_menu('wporg');
 	$wp_admin_bar->remove_menu('comments');
@@ -162,4 +163,100 @@ function kpl_user_bio_visual_editor_unfiltered() {
 	remove_all_filters('pre_user_description');
 }
 add_action('admin_init','kpl_user_bio_visual_editor_unfiltered');
+
+
+//  Add an metabox for support into the dashboard and remove default meta boxes
+function mycustom_dashboard_widgets() {
+global $wp_meta_boxes;
+	wp_add_dashboard_widget('custom_help_widget', 'Company Information', 'custom_dashboard_help');
+}
+
+function custom_dashboard_help() { 
+    
+	global $post;
+	
+	$args = array(
+		'post_type' => 'company'
+	);
+	
+	$the_query = new WP_Query( $args );
+	
+	
+	if ( $the_query->have_posts() ) :
+    
+	// The Loop
+	while ( $the_query->have_posts() ) :
+		$the_query->the_post();
+		echo '<div class="location">';
+		echo '<h4>' . get_the_title() . '</h4>';
+		if (get_post_meta( $post->ID, '_cmb_contact_address1', true )) {
+			echo get_post_meta( $post->ID, '_cmb_contact_address1', true );
+		}
+		if (get_post_meta( $post->ID, '_cmb_contact_address2', true )) {
+			echo '&nbsp;';
+			echo get_post_meta( $post->ID, '_cmb_contact_address2', true );
+		}
+		echo '</br>';
+		if (get_post_meta( $post->ID, '_cmb_contact_city', true )) {
+			echo '<strong>';
+			echo get_post_meta( $post->ID, '_cmb_contact_city', true );
+			echo '</strong>';
+		}
+		if ((get_post_meta( $post->ID, '_cmb_contact_city', true )) && (get_post_meta( $post->ID, '_cmb_contact_state', true ))) {
+			echo ', &nbsp;';
+		}
+		if (get_post_meta( $post->ID, '_cmb_contact_state', true )) {
+			echo '<strong>';
+			echo get_post_meta( $post->ID, '_cmb_contact_state', true );
+			echo '</strong>';
+		}
+		if (get_post_meta( $post->ID, '_cmb_contact_zip', true )) {
+			echo '&nbsp;';
+			echo get_post_meta( $post->ID, '_cmb_contact_zip', true );
+		}
+		
+		
+		if ((get_post_meta( $post->ID, '_cmb_contact_phone', true )) || (get_post_meta( $post->ID, '_cmb_contact_phonetf', true )) || (get_post_meta( $post->ID, '_cmb_contact_fax', true ))) {
+		echo '<div class="metabox-contact-info">';
+			$phone = get_post_meta($post->ID, '_cmb_contact_phone', true);
+			if (get_post_meta( $post->ID, '_cmb_contact_phone', true )) {
+				echo '<strong>Phone</strong>';
+				foreach ( $phone as $key => $valuemeta ) { 
+				echo $valuemeta;
+                echo ' ';
+                }
+			}
+			if (get_post_meta( $post->ID, '_cmb_contact_phonetf', true )) {
+				echo '</br><strong>Toll Free</strong>';
+				echo get_post_meta( $post->ID, '_cmb_contact_phonetf', true );
+			}
+			if (get_post_meta( $post->ID, '_cmb_contact_fax', true )) {
+				echo '</br><strong>Fax</strong>';
+				echo get_post_meta( $post->ID, '_cmb_contact_fax', true );
+			}
+		echo '</div>';	
+		}
+		
+		echo '<br/>';
+		echo edit_post_link();
+		echo '</div>';	
+		
+	endwhile;
+	
+	else : ?>
+		<div class="no-content-entry-content">
+			<a href="/wp-admin/edit.php?post_type=company" class="no-info btn btn-large btn-danger">Add Company Information</a>
+		</div><!-- .entry-content -->
+	<?php endif;
+	
+	/* Restore original Post Data 
+	 * NB: Because we are using new WP_Query we aren't stomping on the 
+	 * original $wp_query and it does not need to be reset.
+	*/
+	wp_reset_postdata();
+}
+	
+add_action('wp_dashboard_setup', 'mycustom_dashboard_widgets');
+
+
 ?>

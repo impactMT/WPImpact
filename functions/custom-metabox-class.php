@@ -231,7 +231,7 @@ class cmb_Meta_Box {
 					echo '<div class="input-prepend"><span class="add-on"><i class="icon-quote-left"></i></span><input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" /></div>','<p class="cmb_metabox_description">', $field['desc'], '</p>';
 					break;
 
-				case 'repeatable-text': // repeatable links
+case 'repeatable-text':
                 //$meta = get_post_meta( $post->ID, $field['id'], false );
 
                 echo '<ul id="'.$field['id'].'-repeatable" class="cmb-cloneable-text-inputs">';
@@ -239,22 +239,21 @@ class cmb_Meta_Box {
                 $irepeat = 0;  
                 if ($meta) {  
                     foreach($meta as $row) {  
-                        echo '<li class="relative"><div class="input-prepend"><span class="add-on sort hndle"><i class="icon-reorder"></i></span><input type="text" style="width: 92%" name="'.$field['id'].'['.$irepeat.']" id="'.$field['id'].'" value="'.$row.'" size="30" /><a class="cmb-cloneable-text-remov button" href="#">-</a></li></div>';  
+                        echo '<li><div class="input-prepend"><span class="add-on sort hndle"><i class="icon-reorder"></i></span><input type="text" style="width: 92%" name="'.$field['id'].'['.$irepeat.']" id="'.$field['id'].'" value="'.$row.'" size="30" /><a class="cmb-cloneable-text-remov button" href="#"><i class="icon-minus-sign"></i></a></div></li>';  
                         $irepeat++;  
                     }  
                 } else {  
-                    echo '<li class="relative"><div class="input-prepend"><span class="add-on sort hndle"><i class="icon-reorder"></i></span><input type="text" style="width: 92%" name="'.$field['id'].'['.$irepeat.']" id="'.$field['id'].'" value="" size="30" /><a class="cmb-cloneable-text-remov'.$field['id'].' button" href="#"><i class="icon-minus-sign"></i></a></li></div>';  
+                    echo '<li><div class="input-prepend"><span class="add-on sort hndle"><i class="icon-reorder"></i></span><input type="text" style="width: 92%" name="'.$field['id'].'['.$irepeat.']" id="'.$field['id'].'" value="" size="30" /><a class="cmb-cloneable-text-remov button" href="#"><i class="icon-minus-sign"></i></a></div></li>';  
                 }  
                 echo '</ul>';
                 echo '<span class="description">'.$field['desc'].'</span>'; 
-                echo '<p><a class="cmb-cloneable-text-add-new'.$field['id'].' add-new-h2" href="#">Add New</a></p>';
+                echo '<p><a class="cmb-cloneable-text-add-new button" href="#">Add New</a></p>';
                 // only add the javascript once
                 static $added_js;
-                // if ( ! $added_js ) : $added_js = true;
-				?>    
+                if ( ! $added_js ) : $added_js = true;?>    
                 <script type="text/javascript">
-                //jQuery( document ).ready( function() {
-                    jQuery('.cmb-cloneable-text-add-new<?php echo $field['id']; ?>').click(function() {  
+                jQuery( document ).ready( function() {
+                    jQuery('.cmb-cloneable-text-add-new').click(function() {  
                         field = jQuery(this).closest('td').find('.cmb-cloneable-text-inputs li:last').clone(true);  
                         fieldLocation = jQuery(this).closest('td').find('.cmb-cloneable-text-inputs li:last');  
                         jQuery('input', field).val('').attr('name', function(index, name) {  
@@ -266,7 +265,7 @@ class cmb_Meta_Box {
                         return false;  
                     });  
 
-                    jQuery('.cmb-cloneable-text-remov<?php echo $field['id']; ?>').click(function(){  
+                    jQuery('.cmb-cloneable-text-remov').click(function(){  
                         jQuery(this).parent().remove();  
                         return false;  
                     });  
@@ -278,9 +277,9 @@ class cmb_Meta_Box {
                         handle: '.sort'  
                     }); 
 
-                //}); 
+                }); 
                 </script>
-                <?php // endif;
+                <?php endif;
                 break;
 					
 				case 'text_time':

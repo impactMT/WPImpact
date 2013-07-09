@@ -5,7 +5,7 @@ Github Theme URI: https://github.com/impactMT/WPImpact
 Author: the Impact team
 Author URI: http://impactmt.com
 Description: The starter theme for Impact Marketing & Technology
-Version: v1.0.1
+Version: v1.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: http://impactmt.com
@@ -622,7 +622,7 @@ ul.icons li [class^="icon-"], ul.icons li [class*=" icon-"] { width: .75em; }
 .icon-weibo:before { content: "\f18a"; }
 .icon-renren:before { content: "\f18b"; }
 /* Social */
-.icon-google-plus:before, .icon-facebook:before, .icon-instagram:before, .icon-twitter:before, .icon-feed:before, .icon-youtube:before, .icon-vimeo2:before, .icon-lanyrd:before, .icon-flickr:before, .icon-picassa:before, .icon-dribbble:before, .icon-forrst:before, .icon-deviantart:before, .icon-steam:before, .icon-github:before, .icon-wordpress:before, .icon-blogger:before, .icon-tumblr:before, .icon-linkedin:before, .icon-soundcloud:before, .icon-stumbleupon:before, .icon-pinterest:before, .icon-flattr:before, .icon-foursquare:before { font-family: 'social-media'; speak: none; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; }
+/*.icon-google-plus:before, .icon-facebook:before, .icon-instagram:before, .icon-twitter:before, .icon-feed:before, .icon-youtube:before, .icon-vimeo2:before, .icon-lanyrd:before, .icon-flickr:before, .icon-picassa:before, .icon-dribbble:before, .icon-forrst:before, .icon-deviantart:before, .icon-steam:before, .icon-github:before, .icon-wordpress:before, .icon-blogger:before, .icon-tumblr:before, .icon-linkedin:before, .icon-soundcloud:before, .icon-stumbleupon:before, .icon-pinterest:before, .icon-flattr:before, .icon-foursquare:before { font-family: 'social-media'; speak: none; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; }
 .icon-google-plus:before { content: "\e00c"; }
 .icon-foursquare:before { content: "\e00a"; }
 .icon-facebook:before { content: "\e00d"; }
@@ -646,7 +646,7 @@ ul.icons li [class^="icon-"], ul.icons li [class*=" icon-"] { width: .75em; }
 .icon-soundcloud:before { content: "\e01f"; }
 .icon-stumbleupon:before { content: "\e020"; }
 .icon-pinterest:before { content: "\e021"; }
-.icon-flattr:before { content: "\e022"; }
+.icon-flattr:before { content: "\e022"; }*/
 
 /* PrettyPhoto */
 div.pp_default .pp_top,div.pp_default .pp_top .pp_middle,div.pp_default .pp_top .pp_left,div.pp_default .pp_top .pp_right,div.pp_default .pp_bottom,div.pp_default .pp_bottom .pp_left,div.pp_default .pp_bottom .pp_middle,div.pp_default .pp_bottom .pp_right{height:13px}

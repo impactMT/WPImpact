@@ -68,7 +68,11 @@ function manage_company_columns($column_name, $id) {
 		echo get_post_meta( $post->ID, '_cmb_contact_zip', true );
         break;
     case 'phone':
-		echo get_post_meta( $post->ID, '_cmb_contact_phone', true );
+	$phone = get_post_meta($post->ID, '_cmb_contact_phone', true);
+	foreach ( $phone as $key => $valuemeta ) {
+		echo $valuemeta;
+		echo ' ';
+	}
         break;
     case 'tollfree':
 		echo get_post_meta( $post->ID, '_cmb_contact_phonetf', true );
