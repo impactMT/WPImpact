@@ -143,14 +143,15 @@ function impactmt_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'impactmt_body_class' );
+// 7/9/13 version 1.0.1 removed because creates an error in the newer version of WP
 /* Adds a pretty "Continue Reading" link to custom post excerpts */
-function impact_custom_excerpt_more( $output ) {
-	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= impact_continue_reading_link();
-	}
-	return $output;
-}
-add_filter( 'get_the_excerpt', 'impact_custom_excerpt_more' );
+//function impact_custom_excerpt_more( $output ) {
+//	if ( has_excerpt() && ! is_attachment() ) {
+//		$output .= impact_continue_reading_link();
+//	}
+//	return $output;
+//}
+//add_filter( 'get_the_excerpt', 'impact_custom_excerpt_more' );
 
 
 /* ---------------------------------------------------------------------- */
