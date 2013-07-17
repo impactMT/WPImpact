@@ -112,6 +112,11 @@ i.icon-print:before { content: "\f02f"; }
 .icon-HTML5-Logo-Badge:before { content: "\e00a"; color:#df5024; }
 .icon-logo-css3-vector:before { content: "\e001"; color:#0270bf; }
 
+/* these are for schnozWeb icons */
+li#menu-posts-doctor .wp-menu-image:before { content: "\f0f0"; font-size: 22px; }
+li#menu-posts-testimonial .wp-menu-image:before { content: "\f10e";  }
+li#menu-posts-faq .wp-menu-image:before {  content: "\f059"; }
+
 /* Social Media */
 .icon-google-plus:before, .icon-facebook:before, .icon-instagram:before, .icon-twitter:before, .icon-feed:before, .icon-youtube:before, .icon-vimeo2:before, .icon-lanyrd:before, .icon-flickr:before, .icon-picassa:before, .icon-dribbble:before, .icon-forrst:before, .icon-deviantart:before, .icon-steam:before, .icon-github:before, .icon-wordpress:before, .icon-blogger:before, .icon-tumblr:before, .icon-linkedin:before, .icon-soundcloud:before, .icon-stumbleupon:before, .icon-pinterest:before, .icon-flattr:before, .icon-foursquare:before { font-family: 'social-media'; speak: none; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; }
 .icon-google-plus:before { content: "\e003"; }
